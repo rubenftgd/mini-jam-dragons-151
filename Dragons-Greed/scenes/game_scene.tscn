@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpi0t32irt5ky"]
+
+[ext_resource type="Script" path="res://scripts/ui/Control.gd" id="1_2g3sp"]
+[ext_resource type="Script" path="res://scripts/ui/workPanel.gd" id="2_xetw8"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2g3sp")
+
+[node name="TopLeft" type="Panel" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WideRight" type="Panel" parent="Control"]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 0
+script = ExtResource("2_xetw8")
+
+[node name="Work" type="Button" parent="Control/WideRight"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="UpgradeA" type="Button" parent="Control/WideRight"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="UpgradeB" type="Button" parent="Control/WideRight"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="DelayTimer" type="Timer" parent="Control/WideRight"]
+
+[node name="BottomLeft" type="Panel" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="Control/WideRight/Work" to="Control/WideRight" method="_on_work_pressed"]
+[connection signal="timeout" from="Control/WideRight/DelayTimer" to="Control/WideRight" method="_on_delay_timer_timeout"]
