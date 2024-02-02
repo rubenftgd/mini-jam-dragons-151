@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5byycxicehh"]
+
+[ext_resource type="Script" path="res://Testing/game.gd" id="1_1debu"]
+[ext_resource type="Texture2D" uid="uid://cft2brwst2rbv" path="res://Sprites/Game.png" id="1_rnrkx"]
+[ext_resource type="PackedScene" uid="uid://d1ywdfm3pa30" path="res://scenes/Dragon.tscn" id="3_bbi6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc1wv"]
+size = Vector2(186.001, 137.607)
+
+[node name="Game" type="Node2D"]
+position = Vector2(-57, -6)
+scale = Vector2(1.79032, 1.26084)
+script = ExtResource("1_1debu")
+
+[node name="Game" type="Sprite2D" parent="."]
+position = Vector2(355, 293)
+scale = Vector2(1, 1)
+texture = ExtResource("1_rnrkx")
+
+[node name="Dragon" parent="." instance=ExtResource("3_bbi6u")]
+unique_name_in_owner = true
+position = Vector2(329.551, 205.419)
+scale = Vector2(3, 3)
+
+[node name="blacksmith" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blacksmith"]
+position = Vector2(127.91, 419.958)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_sc1wv")
+
+[node name="Guild" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guild"]
+position = Vector2(561.074, 404.294)
+scale = Vector2(0.999999, 1)
+shape = SubResource("RectangleShape2D_sc1wv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 428.416
+offset_top = 9.51747
+offset_right = 476.416
+offset_bottom = 49.5175
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+modulate = Color(0.109804, 0.109804, 0.109804, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -14.5
+offset_right = 20.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+
+[connection signal="input_event" from="blacksmith" to="." method="_on_blacksmith_input_event"]
+[connection signal="input_event" from="Guild" to="." method="_on_guild_input_event"]
