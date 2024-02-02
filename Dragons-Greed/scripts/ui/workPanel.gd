@@ -62,12 +62,11 @@ func position_buttons():
 
 func _on_work_pressed():
 	if can_increase_money:
-		can_increase_money = false  # Prevent further increases until the timer completes
-		work_money += upgrade_a_bonus  # Increase work_money by the bonus amount
 		print("Clicked on the Work Money Button")
+		can_increase_money = false  # Prevent further increases until the timer completed
+		$DelayTimer.start(upgrade_b_bonus[0] - upgrade_b_bonus[1])  # Start the timer with the desired delay
+		work_money += upgrade_a_bonus  # Increase work_money by the bonus amount
 		print("Work money: ", work_money); print("")
-
-	$DelayTimer.start(upgrade_b_bonus[0] - upgrade_b_bonus[1])  # Start the timer with the desired delay
 
 func _on_delay_timer_timeout():
 	can_increase_money = true
