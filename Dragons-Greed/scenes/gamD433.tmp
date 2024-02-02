@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpi0t32irt5ky"]
+
+[ext_resource type="Script" path="res://scripts/ui/Control.gd" id="1_2g3sp"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2g3sp")
+
+[node name="TopLeft" type="Panel" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WideRight" type="Panel" parent="Control"]
+layout_mode = 0
+
+[node name="Button" type="Button" parent="Control/WideRight"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="BottomLeft" type="Panel" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
