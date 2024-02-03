@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< Updated upstream
-uid="uid://d0e8a1x5s7ch"
-=======
-uid="uid://dvsmwec4a4bs3"
->>>>>>> Stashed changes
-path="res://.godot/imported/progressbarempty.png-32b0b88f4f18b46b6ae021856984c7a4.ctex"
+uid="uid://7fqsrui8givp"
+path="res://.godot/imported/ruby.png-558feeedc8e0c1b389926202922368a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/progressbarempty.png"
-dest_files=["res://.godot/imported/progressbarempty.png-32b0b88f4f18b46b6ae021856984c7a4.ctex"]
+source_file="res://Sprites/ruby.png"
+dest_files=["res://.godot/imported/ruby.png-558feeedc8e0c1b389926202922368a2.ctex"]
 
 [params]
 
