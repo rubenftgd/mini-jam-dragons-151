@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwdcppos0x7sv"
-path="res://.godot/imported/progressbarbar.png-f79755bc1ee8c27d245a9fdb6ac7a929.ctex"
+uid="uid://u33gplbarjhv"
+path="res://.godot/imported/moedasgiratorias.png-db62f697129153d37a53791b69f7108a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Testing/progressbarbar.png"
-dest_files=["res://.godot/imported/progressbarbar.png-f79755bc1ee8c27d245a9fdb6ac7a929.ctex"]
+source_file="res://Sprites/moedasgiratorias.png"
+dest_files=["res://.godot/imported/moedasgiratorias.png-db62f697129153d37a53791b69f7108a.ctex"]
 
 [params]
 
