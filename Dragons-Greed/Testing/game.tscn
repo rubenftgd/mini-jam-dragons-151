@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5byycxicehh"]
+[gd_scene load_steps=7 format=3 uid="uid://b5byycxicehh"]
 
 [ext_resource type="Script" path="res://Testing/game.gd" id="1_1debu"]
 [ext_resource type="Texture2D" uid="uid://cft2brwst2rbv" path="res://Sprites/Game.png" id="1_rnrkx"]
 [ext_resource type="PackedScene" uid="uid://d1ywdfm3pa30" path="res://scenes/Dragon.tscn" id="3_bbi6u"]
 
+[ext_resource type="Texture2D" uid="uid://d0kbxgu7bv5kd" path="res://Sprites/complete.png" id="5_3rfso"]
+[ext_resource type="Texture2D" uid="uid://irix24j4nk3g" path="res://Sprites/3 amigos.png" id="6_3haij"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc1wv"]
-size = Vector2(186.001, 137.607)
+size = Vector2(87.4149, 122.736)
 
 [node name="Game" type="Node2D"]
 position = Vector2(-57, -6)
@@ -14,29 +17,12 @@ script = ExtResource("1_1debu")
 
 [node name="Game" type="Sprite2D" parent="."]
 position = Vector2(355, 293)
-scale = Vector2(1, 1)
 texture = ExtResource("1_rnrkx")
 
 [node name="Dragon" parent="." instance=ExtResource("3_bbi6u")]
 unique_name_in_owner = true
-position = Vector2(329.551, 205.419)
+position = Vector2(329.55, 203.832)
 scale = Vector2(3, 3)
-
-[node name="blacksmith" type="Area2D" parent="."]
-scale = Vector2(1, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blacksmith"]
-position = Vector2(127.91, 419.958)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_sc1wv")
-
-[node name="Guild" type="Area2D" parent="."]
-scale = Vector2(1, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Guild"]
-position = Vector2(561.074, 404.294)
-scale = Vector2(0.999999, 1)
-shape = SubResource("RectangleShape2D_sc1wv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8
@@ -67,5 +53,23 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "0"
 
-[connection signal="input_event" from="blacksmith" to="." method="_on_blacksmith_input_event"]
+[node name="Complete2" type="Sprite2D" parent="."]
+position = Vector2(798.735, 289.49)
+scale = Vector2(0.604899, 0.999999)
+texture = ExtResource("5_3rfso")
+
+[node name="Guild" type="Area2D" parent="."]
+position = Vector2(0.000408173, -7.29561e-05)
+scale = Vector2(1, 0.999999)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guild"]
+position = Vector2(627.821, 260.144)
+scale = Vector2(0.999999, 1)
+shape = SubResource("RectangleShape2D_sc1wv")
+
+[node name="3Amigos" type="Sprite2D" parent="."]
+position = Vector2(132.937, 182.722)
+scale = Vector2(0.489101, 0.492274)
+texture = ExtResource("6_3haij")
+
 [connection signal="input_event" from="Guild" to="." method="_on_guild_input_event"]
