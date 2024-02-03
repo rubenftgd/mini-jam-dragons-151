@@ -7,8 +7,6 @@ var is_backsmith_clicked:bool = false
 
 func _ready():
 	%Dragon.play_walk()
-	 
-	
 
 func _process(delta):
 	deltval += delta
@@ -29,9 +27,6 @@ func _on_blacksmith_input_event(viewport, event, shape_idx):
 			%Dragon.position.x = 280
 			get_node("Signal2").position.x -= 210
 			get_node("Signal2").flip_h = true 
-		
-	
-
 
 func _on_guild_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -42,5 +37,3 @@ func _on_guild_input_event(viewport, event, shape_idx):
 		%Dragon.position.x = 280
 		get_node("Signal2").position.x += 210
 		get_node("Signal2").flip_h = false
-
-

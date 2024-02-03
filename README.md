@@ -2,4 +2,4 @@
 Mini Jam Dragons 151
 
 # Jam Link
-*[Itch.io url][https://itch.io/jam/mini-jam-151-dragons]*
+*[Itch.io url](https://itch.io/jam/mini-jam-151-dragons)*
