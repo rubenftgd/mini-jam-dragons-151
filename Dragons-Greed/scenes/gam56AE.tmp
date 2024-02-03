@@ -19,28 +19,22 @@ offset_bottom = 40.0
 layout_mode = 0
 script = ExtResource("2_xetw8")
 
-[node name="WorkButton" type="Button" parent="Control/WideRight"]
+[node name="Work" type="Button" parent="Control/WideRight"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 
-[node name="EducationButton" type="Button" parent="Control/WideRight"]
+[node name="UpgradeA" type="Button" parent="Control/WideRight"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 
-[node name="SpeedButton" type="Button" parent="Control/WideRight"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="GemsButton" type="Button" parent="Control/WideRight"]
+[node name="UpgradeB" type="Button" parent="Control/WideRight"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 
 [node name="DelayTimer" type="Timer" parent="Control/WideRight"]
-one_shot = true
 
-[connection signal="pressed" from="Control/WideRight/WorkButton" to="Control/WideRight" method="_on_work_pressed"]
+[connection signal="pressed" from="Control/WideRight/Work" to="Control/WideRight" method="_on_work_pressed"]
 [connection signal="timeout" from="Control/WideRight/DelayTimer" to="Control/WideRight" method="_on_delay_timer_timeout"]
