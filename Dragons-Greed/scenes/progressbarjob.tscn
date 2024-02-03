@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://0k8b1k5ti5td"]
+
+[ext_resource type="Texture2D" uid="uid://d0e8a1x5s7ch" path="res://Sprites/progressbarempty.png" id="1_qnccw"]
+[ext_resource type="Texture2D" uid="uid://d4hgtnq82y55e" path="res://Sprites/progressbarbar.png" id="2_caspf"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+min_value = 1.0
+value = 39.0
+rounded = true
+texture_under = ExtResource("1_qnccw")
+texture_progress = ExtResource("2_caspf")
