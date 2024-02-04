@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpi0t32irt5ky"]
+
+[ext_resource type="Script" path="res://scripts/ui/MainScreen.gd" id="1_2g3sp"]
+[ext_resource type="Script" path="res://scripts/ui/RightScreen.gd" id="2_xetw8"]
+[ext_resource type="Texture2D" uid="uid://cft2brwst2rbv" path="res://Sprites/Game.png" id="2_ynrge"]
+[ext_resource type="PackedScene" uid="uid://d1ywdfm3pa30" path="res://scenes/Dragon.tscn" id="3_hbd0b"]
+[ext_resource type="AudioStream" uid="uid://co7svpdfjpivn" path="res://SFX/Mini Jam Febrero 1.wav" id="4_56c27"]
+[ext_resource type="Script" path="res://scripts/sfx/Music.gd" id="5_4pb8x"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2g3sp")
+
+[node name="WideLeft" type="Panel" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/WideLeft"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ynrge")
+expand_mode = 2
+
+[node name="Dragon" parent="Control/WideLeft" instance=ExtResource("3_hbd0b")]
+
+[node name="WideRight" type="Panel" parent="Control"]
+layout_mode = 0
+script = ExtResource("2_xetw8")
+
+[node name="WorkButton" type="TextureButton" parent="Control/WideRight"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EducationButton" type="Button" parent="Control/WideRight"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="SpeedButton" type="Button" parent="Control/WideRight"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="GemsButton" type="Button" parent="Control/WideRight"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="DelayTimer" type="Timer" parent="Control/WideRight"]
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_56c27")
+volume_db = 5.0
+autoplay = true
+script = ExtResource("5_4pb8x")
+
+[connection signal="pressed" from="Control/WideRight/WorkButton" to="Control/WideRight" method="_on_work_button_pressed"]
+[connection signal="timeout" from="Control/WideRight/DelayTimer" to="Control/WideRight" method="_on_delay_timer_timeout"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="_on_finished"]
