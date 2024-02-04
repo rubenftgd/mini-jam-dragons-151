@@ -81,15 +81,20 @@ func _on_work_button_pressed():
 		print("Work money: ", work_instance.work_money); print("")
 
 func _on_education_button_mouse_entered():
-	if work_instance.can_increase_money and (work_instance.work_money >= education_instance.education_bonus):
+	if work_instance.can_increase_money and (work_instance.work_money >= education_instance.getEducationPrice()) and (education_instance.getEducationPrice() != 0):
 		print("Education Button")
-		work_instance.work_money -= education_instance.education_bonus
+		work_instance.work_money -= education_instance.getEducationPrice()
 		education_instance.applyBonus()
 		print("New Value for Work money: ", education_instance.education_bonus); print("")
 
 func _on_speed_button_mouse_entered():
-	pass # Replace with function body.
-
+	if work_instance.can_increase_money and (work_instance.work_money >= speed_instance.getSpeedPrice()) and (speed_instance.getSpeedPrice() != 0):
+		print("Speed Button")
+		work_instance.work_money -= speed_instance.getSpeedPrice()
+		speed_instance.applyBonus()
 
 func _on_gems_button_mouse_entered():
-	pass # Replace with function body.
+	if work_instance.can_increase_money and (work_instance.work_money >= gems_instance.getGemsPrice()) and (gems_instance.getGemsPrice() != 0):
+		print("Gems Button")
+		work_instance.work_money -= gems_instance.getGemsPrice()
+		gems_instance.purchaseGem()
