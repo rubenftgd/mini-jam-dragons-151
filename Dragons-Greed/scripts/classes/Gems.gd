@@ -13,11 +13,11 @@ func purchaseGem():
 	if gems_to_purchase > 0:
 		gems_to_purchase -=1
 		
-func getGemPrice():
+func getGemsPrice():
 	if gems_to_purchase > 0:
 		# Correctly calculate the index of the next gem to purchase
 		var index = gems_price.size() - gems_to_purchase
 		return gems_price[index]
 	else:
-		print("No more gems to purchase")
+		#print("No more gems to purchase")
 		return 0  # Or return an appropriate value indicating no more purchases are possible
