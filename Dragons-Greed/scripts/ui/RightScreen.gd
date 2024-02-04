@@ -8,6 +8,7 @@ var speed_button
 var gems_button
 var space_available
 var margin_percentage = 0.065 # Adjust at will
+var progress_bar
 #########################################
 # Classes Variables
 var work_instance = Work.new()
@@ -20,6 +21,7 @@ func _ready():
 	education_button = $TextureRect/EducationButton
 	speed_button = $TextureRect/SpeedButton
 	gems_button = $TextureRect/GemsButton
+	progress_bar = $TextureRect2/TextureProgressBar
 #	work_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
 	education_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
 	speed_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
@@ -67,6 +69,14 @@ func position_buttons():
 
 	gems_button.size = Vector2(button_width, button_width)
 	gems_button.position = Vector2(start_x + 3 * (button_width + spacing), y_position)
+	
+	#Posicao da progress bar (hardCoded), e o offset é para colocar a textura no sitio certo
+	progress_bar.position = Vector2(50,200) 
+	progress_bar.texture_progress_offset = Vector2(0,-6)
+	
+	# Os valores da progressbar tem de ser 16 e 84
+	#progress_bar.value = 0
+	
 
 func _on_delay_timer_timeout():
 	work_instance.can_increase_money = true
