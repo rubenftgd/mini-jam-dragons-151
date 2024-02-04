@@ -7,6 +7,8 @@ var window_size
 var screen_split = 0.67
 # Nodes
 var texture_rect
+var dragon_node
+var dragon_constants = [ 0.5, 0.40 ,3 ] # x, y position and scaling
 
 func _ready():
 	window_size = get_viewport_rect().size  # Get the current window size
@@ -19,8 +21,11 @@ func _ready():
 	self.size.x = window_size.x  # Set the Control node's minimum size to the window size
 	self.size.y = window_size.y
 	resize_panels()
-	texture_rect = $WideLeft/TextureRect  # Adjust the path if your TextureRect is nested
-	texture_rect.size = wide_left_panel.size  # Match the TextureRect size to the panel size
+	texture_rect = $WideLeft/TextureRect
+	texture_rect.size = wide_left_panel.size
+	
+	# Dragon
+	scale_dragon()
 
 func resize_panels():
 	window_size = get_viewport_rect().size  # Get the current window size
@@ -35,3 +40,12 @@ func resize_panels():
 
 func get_screen_split_value():
 	return screen_split
+
+func scale_dragon():
+	dragon_node = $WideLeft/Dragon
+	dragon_node.position = Vector2(wide_left_panel.size.x * dragon_constants[0],
+	 wide_left_panel.size.y * dragon_constants[1])
+	
+	# Scale the Dragon node
+	dragon_node.scale = Vector2(dragon_constants[2], dragon_constants[2])
+
