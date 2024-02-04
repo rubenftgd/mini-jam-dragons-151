@@ -5,6 +5,8 @@ var wide_left_panel
 var wide_right_panel
 var window_size
 var screen_split = 0.67
+# Nodes
+var texture_rect
 
 func _ready():
 	window_size = get_viewport_rect().size  # Get the current window size
@@ -17,6 +19,8 @@ func _ready():
 	self.size.x = window_size.x  # Set the Control node's minimum size to the window size
 	self.size.y = window_size.y
 	resize_panels()
+	texture_rect = $WideLeft/TextureRect  # Adjust the path if your TextureRect is nested
+	texture_rect.size = wide_left_panel.size  # Match the TextureRect size to the panel size
 
 func resize_panels():
 	window_size = get_viewport_rect().size  # Get the current window size
