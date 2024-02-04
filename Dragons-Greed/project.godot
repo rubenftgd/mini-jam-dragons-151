@@ -13,8 +13,8 @@ config_version=5
 config/name="Dragons-Greed"
 run/main_scene="res://scenes/game_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://Sprites/house.png"
-config/windows_native_icon="res://icons/house48x48-bg.ico"
+config/icon="res://icons/house.png"
+config/windows_native_icon="res://icons/house-bg-best.ico"
 
 [display]
 
