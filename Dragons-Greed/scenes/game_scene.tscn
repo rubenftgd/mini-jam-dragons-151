@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpi0t32irt5ky"]
+[gd_scene load_steps=12 format=3 uid="uid://cpi0t32irt5ky"]
 
 [ext_resource type="Script" path="res://scripts/ui/MainScreen.gd" id="1_2g3sp"]
 [ext_resource type="Script" path="res://scripts/ui/RightScreen.gd" id="2_xetw8"]
@@ -7,6 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://co7svpdfjpivn" path="res://SFX/Mini Jam Febrero 1.wav" id="4_56c27"]
 [ext_resource type="Script" path="res://scripts/sfx/Music.gd" id="5_4pb8x"]
 [ext_resource type="Texture2D" uid="uid://d00n3h3dwl3pi" path="res://Sprites/boarder.png" id="5_x2xqi"]
+[ext_resource type="Texture2D" uid="uid://doqhf1vodcr71" path="res://Sprites/moeda.png" id="6_rfx4f"]
+[ext_resource type="Texture2D" uid="uid://b7uo2yx62eji3" path="res://Sprites/Educacao.png" id="7_0qky6"]
+[ext_resource type="Texture2D" uid="uid://c46isys11rfdv" path="res://Sprites/powerup.png" id="8_pri6a"]
+[ext_resource type="Texture2D" uid="uid://7fqsrui8givp" path="res://Sprites/ruby.png" id="9_qt7qj"]
 
 [node name="GameScene" type="Node2D"]
 
@@ -47,21 +51,33 @@ expand_mode = 4
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture_normal = ExtResource("6_rfx4f")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="EducationButton" type="Button" parent="Control/WideRight/TextureRect"]
+[node name="EducationButton" type="TextureButton" parent="Control/WideRight/TextureRect"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("7_0qky6")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="SpeedButton" type="Button" parent="Control/WideRight/TextureRect"]
+[node name="SpeedButton" type="TextureButton" parent="Control/WideRight/TextureRect"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("8_pri6a")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="GemsButton" type="Button" parent="Control/WideRight/TextureRect"]
+[node name="GemsButton" type="TextureButton" parent="Control/WideRight/TextureRect"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("9_qt7qj")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_56c27")
@@ -71,4 +87,7 @@ script = ExtResource("5_4pb8x")
 
 [connection signal="timeout" from="Control/WideRight/DelayTimer" to="Control/WideRight" method="_on_delay_timer_timeout"]
 [connection signal="pressed" from="Control/WideRight/TextureRect/WorkButton" to="Control/WideRight" method="_on_work_button_pressed"]
+[connection signal="mouse_entered" from="Control/WideRight/TextureRect/EducationButton" to="Control/WideRight" method="_on_education_button_mouse_entered"]
+[connection signal="mouse_entered" from="Control/WideRight/TextureRect/SpeedButton" to="Control/WideRight" method="_on_speed_button_mouse_entered"]
+[connection signal="mouse_entered" from="Control/WideRight/TextureRect/GemsButton" to="Control/WideRight" method="_on_gems_button_mouse_entered"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="_on_finished"]
