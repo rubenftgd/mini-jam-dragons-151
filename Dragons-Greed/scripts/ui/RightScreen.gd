@@ -9,6 +9,8 @@ var gems_button
 var space_available
 var margin_percentage = 0.065 # Adjust at will
 var progress_bar
+var money_label_border
+var money_label
 #########################################
 # Classes Variables
 var work_instance = Work.new()
@@ -22,6 +24,8 @@ func _ready():
 	speed_button = $TextureRect/SpeedButton
 	gems_button = $TextureRect/GemsButton
 	progress_bar = $TextureRect2/TextureProgressBar
+	money_label_border = $TextureRectLabel
+	money_label = $TextureRectLabel/Label
 #	work_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
 	education_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
 	speed_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
@@ -70,25 +74,34 @@ func position_buttons():
 	gems_button.size = Vector2(button_width, button_width)
 	gems_button.position = Vector2(start_x + 3 * (button_width + spacing), y_position)
 	
+	##############################
+	# Progress Bar
 	#Posicao da progress bar (hardCoded), e o offset é para colocar a textura no sitio certo
 	progress_bar.position = Vector2(50,200) 
 	progress_bar.texture_progress_offset = Vector2(0,-6)
 	
 	# Os valores da progressbar tem de ser 16 e 84
 	#progress_bar.value = 0
-	
+	##############################
+	# Money Label
+	y_position = size.y * 0.055  # Example: 20% from the top of the parent container
+	#money_label_border.size = Vector2(money_label_border.size.x * 1.3, money_label_border.size.y)
+	var x_position_label = (space_available/2) - (money_label_border.size.x)/2
+	money_label_border.position = Vector2(x_position_label, y_position)
+	money_label.position = Vector2(30, 25)
+	money_label.text = str(work_instance.work_money)
 
 func _on_delay_timer_timeout():
 	work_instance.can_increase_money = true
 	print("Time has passed. You can work again!"); print("")
+	work_instance.work_money += education_instance.education_bonus  # Increase work_money by the bonus amount
 
 func _on_work_button_pressed():
 	if work_instance.can_increase_money:
 		print("Clicked on the Work Money Button")
 		work_instance.can_increase_money = false  # Prevent further increases until the timer completed
 		$DelayTimer.start(speed_instance.total_time - speed_instance.bonus_reduce_time)  # Start the timer with the desired delay
-		work_instance.work_money += education_instance.education_bonus  # Increase work_money by the bonus amount
-		print("Work money: ", work_instance.work_money); print("")
+		#print("Work money: ", work_instance.work_money); print("")
 
 func _on_education_button_mouse_entered():
 	if work_instance.can_increase_money and (work_instance.work_money >= education_instance.getEducationPrice()) and (education_instance.getEducationPrice() != 0):
