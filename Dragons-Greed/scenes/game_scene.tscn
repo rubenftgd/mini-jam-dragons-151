@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpi0t32irt5ky"]
+[gd_scene load_steps=15 format=3 uid="uid://cpi0t32irt5ky"]
 
 [ext_resource type="Script" path="res://scripts/ui/MainScreen.gd" id="1_2g3sp"]
 [ext_resource type="Script" path="res://scripts/ui/RightScreen.gd" id="2_xetw8"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://7fqsrui8givp" path="res://Sprites/ruby.png" id="9_qt7qj"]
 [ext_resource type="Texture2D" uid="uid://bji26fg1t3imm" path="res://Sprites/jobbarempty.png" id="10_pke2w"]
 [ext_resource type="Texture2D" uid="uid://bw2pamasn506u" path="res://Sprites/jobprogressbar.png" id="11_gyshx"]
+[ext_resource type="Texture2D" uid="uid://c8cdg0twmoyyj" path="res://Sprites/botao.png" id="12_g7ii2"]
 
 [node name="GameScene" type="Node2D"]
 
@@ -85,6 +86,7 @@ stretch_mode = 0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+expand_mode = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Control/WideRight/TextureRect2"]
 layout_mode = 0
@@ -92,6 +94,18 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture_under = ExtResource("10_pke2w")
 texture_progress = ExtResource("11_gyshx")
+
+[node name="TextureRectLabel" type="TextureRect" parent="Control/WideRight"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_g7ii2")
+
+[node name="Label" type="Label" parent="Control/WideRight/TextureRectLabel"]
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_56c27")
