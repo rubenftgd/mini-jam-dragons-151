@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d1ywdfm3pa30"]
 
 [ext_resource type="Script" path="res://scripts/Dragon.gd" id="1_1pxmt"]
-[ext_resource type="Texture2D" uid="uid://bw8q4xhb7qpkh" path="res://Sprites/PassaroAnimationslados.png" id="2_d8om1"]
+[ext_resource type="Texture2D" uid="uid://bmxnnn6yw7rjl" path="res://Sprites/PassarosAtualizados.png" id="2_ugjso"]
 
 [sub_resource type="Animation" id="Animation_8hwlu"]
 length = 0.001
@@ -21,7 +21,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ackeg"]
 resource_name = "walk"
-length = 0.8
+length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -48,8 +48,8 @@ script = ExtResource("1_1pxmt")
 [node name="Pigian" type="Sprite2D" parent="."]
 modulate = Color(1, 0.254902, 0.611765, 1)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_d8om1")
-hframes = 37
+texture = ExtResource("2_ugjso")
+hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
