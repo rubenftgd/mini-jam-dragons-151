@@ -8,6 +8,7 @@ var speed_button
 var gems_button
 # Scaling factor
 var scale_factor = 4  # Adjust this factor as needed
+var space_available
 # Button colors
 var color_work_button = Color(1, 0, 0)  # Red
 var color_education_button = Color(0, 1, 0)  # Green
@@ -29,6 +30,7 @@ func _ready():
 	education_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
 	speed_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
 	gems_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
+	space_available = 1 - get_parent().get_screen_split_value()
 	
 func _process(_delta):
 	position_buttons()
@@ -66,14 +68,15 @@ func position_buttons():
 	# Set color for the fourth button if needed
 	gems_button.position = Vector2(start_x + 3 * (button_width + spacing), y_position)
 
-func _on_work_pressed():
+func _on_delay_timer_timeout():
+	work_instance.can_increase_money = true
+	print("Time has passed. You can work again!"); print("")
+
+
+func _on_work_button_pressed():
 	if work_instance.can_increase_money:
 		print("Clicked on the Work Money Button")
 		work_instance.can_increase_money = false  # Prevent further increases until the timer completed
 		$DelayTimer.start(speed_instance.total_time - speed_instance.bonus_reduce_time)  # Start the timer with the desired delay
 		work_instance.work_money += education_instance.education_bonus  # Increase work_money by the bonus amount
 		print("Work money: ", work_instance.work_money); print("")
-
-func _on_delay_timer_timeout():
-	work_instance.can_increase_money = true
-	print("Time has passed. You can work again!"); print("")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://0k8b1k5ti5td"]
+[gd_scene load_steps=3 format=3 uid="uid://dilgnnai48ftt"]
 
-[ext_resource type="Texture2D" uid="uid://d0e8a1x5s7ch" path="res://Sprites/progressbarempty.png" id="1_qnccw"]
-[ext_resource type="Texture2D" uid="uid://d4hgtnq82y55e" path="res://Sprites/progressbarbar.png" id="2_caspf"]
+[ext_resource type="Texture2D" uid="uid://c4fiea7n5l6nm" path="res://Sprites/progressbarempty.png" id="1_qnccw"]
+[ext_resource type="Texture2D" uid="uid://dsgevfgq13nu2" path="res://Sprites/progressbarbar.png" id="2_caspf"]
 
 [node name="Node2D" type="Node2D"]
 

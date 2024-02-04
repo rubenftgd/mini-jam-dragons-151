@@ -4,7 +4,7 @@ extends Control
 var wide_left_panel
 var wide_right_panel
 var window_size
-var screen_plit = 0.67
+var screen_split = 0.67
 
 func _ready():
 	window_size = get_viewport_rect().size  # Get the current window size
@@ -22,9 +22,12 @@ func resize_panels():
 	window_size = get_viewport_rect().size  # Get the current window size
 
 	# Adjust the size and position of each panel based on the window size.
-	wide_left_panel.size = Vector2(window_size.x * screen_plit, window_size.y)
-	wide_right_panel.size = Vector2(window_size.x * (1 - screen_plit), window_size.y)
+	wide_left_panel.size = Vector2(window_size.x * screen_split, window_size.y)
+	wide_right_panel.size = Vector2(window_size.x * (1 - screen_split), window_size.y)
 
 	# Set positions - assuming top left corner is (0, 0)
 	wide_left_panel.position = Vector2(0, 0)
-	wide_right_panel.position = Vector2(window_size.x * screen_plit, 0)
+	wide_right_panel.position = Vector2(window_size.x * screen_split, 0)
+
+func get_screen_split_value():
+	return screen_split
