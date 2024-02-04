@@ -6,7 +6,8 @@ var wide_right_panel
 var window_size
 var screen_split = 0.67
 # Nodes
-var texture_rect
+var texture_rect_left
+var texture_rect_right
 var dragon_node
 var dragon_constants = [ 0.5, 0.40 ,3 ] # x, y position and scaling
 
@@ -21,8 +22,13 @@ func _ready():
 	self.size.x = window_size.x  # Set the Control node's minimum size to the window size
 	self.size.y = window_size.y
 	resize_panels()
-	texture_rect = $WideLeft/TextureRect
-	texture_rect.size = wide_left_panel.size
+	
+	# Base Images
+	texture_rect_left = $WideLeft/TextureRect
+	texture_rect_left.size = wide_left_panel.size
+	
+	texture_rect_right = $WideRight/TextureRect
+	texture_rect_right.size = wide_right_panel.size
 	
 	# Dragon
 	scale_dragon()

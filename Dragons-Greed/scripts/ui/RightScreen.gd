@@ -22,10 +22,10 @@ var speed_instance = Speed.new()
 var gems_instance = Gems.new()
 #########################################
 func _ready():
-	work_button = $WorkButton
-	education_button = $EducationButton
-	speed_button = $SpeedButton
-	gems_button = $GemsButton
+	work_button = $TextureRect/WorkButton
+	education_button = $TextureRect/EducationButton
+	speed_button = $TextureRect/SpeedButton
+	gems_button = $TextureRect/GemsButton
 	work_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
 	education_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
 	speed_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
