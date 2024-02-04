@@ -18,6 +18,12 @@ var education_instance = Education.new()
 var speed_instance = Speed.new()
 var gems_instance = Gems.new()
 #########################################
+# Music Variables
+var money_sound
+var education_sound
+var speed_sound
+var gems_sound
+#########################################
 func _ready():
 	work_button = $TextureRect/WorkButton
 	education_button = $TextureRect/EducationButton
@@ -34,8 +40,17 @@ func _ready():
 	var window_size = get_viewport_rect().size
 	space_available = window_size.x * screen_percentage_available
 	
+	money_sound = $MoneySound
+	education_sound = $EducationSound
+	speed_sound = $SpeedSound
+	gems_sound = $GemsSound
+	
 func _process(_delta):
 	position_buttons()
+	if not $DelayTimer.is_stopped():
+		var elapsed = $DelayTimer.wait_time - $DelayTimer.time_left
+		var progress = min(elapsed / $DelayTimer.wait_time, 1.0)
+		progress_bar.value = progress * 100
 
 func position_buttons():
 	# Base values for a standard screen size
@@ -80,8 +95,6 @@ func position_buttons():
 	progress_bar.position = Vector2(50,200) 
 	progress_bar.texture_progress_offset = Vector2(0,-6)
 	
-	# Os valores da progressbar tem de ser 16 e 84
-	#progress_bar.value = 0
 	##############################
 	# Money Label
 	y_position = size.y * 0.055  # Example: 20% from the top of the parent container
@@ -95,6 +108,7 @@ func _on_delay_timer_timeout():
 	work_instance.can_increase_money = true
 	print("Time has passed. You can work again!"); print("")
 	work_instance.work_money += education_instance.education_bonus  # Increase work_money by the bonus amount
+	drop_item_on_dragon(1)
 
 func _on_work_button_pressed():
 	if work_instance.can_increase_money:
@@ -105,9 +119,10 @@ func _on_work_button_pressed():
 
 func _on_education_button_mouse_entered():
 	if work_instance.can_increase_money and (work_instance.work_money >= education_instance.getEducationPrice()) and (education_instance.getEducationPrice() != 0):
-		print("Education Button")
+		print("Education Button")	
 		work_instance.work_money -= education_instance.getEducationPrice()
 		education_instance.applyBonus()
+		drop_item_on_dragon(2)
 		print("New Value for Work money: ", education_instance.education_bonus); print("")
 
 func _on_speed_button_mouse_entered():
@@ -115,9 +130,26 @@ func _on_speed_button_mouse_entered():
 		print("Speed Button")
 		work_instance.work_money -= speed_instance.getSpeedPrice()
 		speed_instance.applyBonus()
+		drop_item_on_dragon(3)
 
 func _on_gems_button_mouse_entered():
 	if work_instance.can_increase_money and (work_instance.work_money >= gems_instance.getGemsPrice()) and (gems_instance.getGemsPrice() != 0):
 		print("Gems Button")
 		work_instance.work_money -= gems_instance.getGemsPrice()
 		gems_instance.purchaseGem()
+		drop_item_on_dragon(4)
+
+func drop_item_on_dragon(number : int):
+	if number == 1:
+		money_sound.play()
+	elif number == 2:
+		education_sound.play()
+	elif number == 3:
+		speed_sound.play()
+	elif number == 4:
+		gems_button.play()
+	else:
+		print("Error in the sound effects!")
+		return 0
+
+var elapsed_time := 0.0  # Tracks the elapsed time

@@ -11,6 +11,7 @@ var texture_rect_right
 var dragon_node
 var dragon_constants = [ 0.5, 0.40 ,3 ] # x, y position and scaling
 
+
 func _ready():
 	window_size = get_viewport_rect().size  # Get the current window size
 

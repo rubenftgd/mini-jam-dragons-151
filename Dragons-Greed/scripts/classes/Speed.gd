@@ -11,7 +11,8 @@ func _init(_total_time: float = 4, _bonus_reduce_time: float = 0.35, _max_bonus_
 	total_time = _total_time
 	bonus_reduce_time = _bonus_reduce_time
 	max_bonus_allowed = _max_bonus_allowed
-	speed_price = [20,30,50,85,150,225,330,610,900,1600]
+	#speed_price = [20,30,50,85,150,225,330,610,900,1600]
+	speed_price = [20,50,100,200,500,900,1400,2000,2700,3500]
 
 func applyBonus():
 	if max_bonus_allowed > 0:

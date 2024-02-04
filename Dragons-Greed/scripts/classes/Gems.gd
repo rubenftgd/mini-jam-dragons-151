@@ -5,7 +5,7 @@ var gems_price: Array[int]
 var gems_to_purchase: int
 
 # Constructor
-func _init(_gems_price: Array[int] = [2000, 5000, 10000], _gems_to_purchase: int = 3):
+func _init(_gems_price: Array[int] = [2000, 5000, 10000, 25000], _gems_to_purchase: int = 4):
 	gems_price = _gems_price
 	gems_to_purchase = _gems_to_purchase
 
