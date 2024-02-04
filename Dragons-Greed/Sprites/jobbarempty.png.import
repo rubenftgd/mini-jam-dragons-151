@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4fiea7n5l6nm"
-path="res://.godot/imported/progressbarempty.png-32b0b88f4f18b46b6ae021856984c7a4.ctex"
+uid="uid://bji26fg1t3imm"
+path="res://.godot/imported/jobbarempty.png-1f01cbd3db65cd471b32c1aa67838c6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/progressbarempty.png"
-dest_files=["res://.godot/imported/progressbarempty.png-32b0b88f4f18b46b6ae021856984c7a4.ctex"]
+source_file="res://Sprites/jobbarempty.png"
+dest_files=["res://.godot/imported/jobbarempty.png-1f01cbd3db65cd471b32c1aa67838c6d.ctex"]
 
 [params]
 

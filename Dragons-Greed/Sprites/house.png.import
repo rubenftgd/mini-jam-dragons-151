@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4fiea7n5l6nm"
-path="res://.godot/imported/progressbarempty.png-32b0b88f4f18b46b6ae021856984c7a4.ctex"
+uid="uid://d3c2f0hc4ijo"
+path="res://.godot/imported/house.png-1067fa9882230073ba8664adfd8b09b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/progressbarempty.png"
-dest_files=["res://.godot/imported/progressbarempty.png-32b0b88f4f18b46b6ae021856984c7a4.ctex"]
+source_file="res://Sprites/house.png"
+dest_files=["res://.godot/imported/house.png-1067fa9882230073ba8664adfd8b09b2.ctex"]
 
 [params]
 

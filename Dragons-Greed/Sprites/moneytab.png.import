@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4fiea7n5l6nm"
-path="res://.godot/imported/progressbarempty.png-32b0b88f4f18b46b6ae021856984c7a4.ctex"
+uid="uid://fsopmgafqhxp"
+path="res://.godot/imported/moneytab.png-325086a366a64a6864f6eb72a7df9f2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/progressbarempty.png"
-dest_files=["res://.godot/imported/progressbarempty.png-32b0b88f4f18b46b6ae021856984c7a4.ctex"]
+source_file="res://Sprites/moneytab.png"
+dest_files=["res://.godot/imported/moneytab.png-325086a366a64a6864f6eb72a7df9f2e.ctex"]
 
 [params]
 

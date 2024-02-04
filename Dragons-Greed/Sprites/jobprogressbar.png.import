@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4fiea7n5l6nm"
-path="res://.godot/imported/progressbarempty.png-32b0b88f4f18b46b6ae021856984c7a4.ctex"
+uid="uid://bw2pamasn506u"
+path="res://.godot/imported/jobprogressbar.png-780fe96aef4361de35b8f30f2fca73e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/progressbarempty.png"
-dest_files=["res://.godot/imported/progressbarempty.png-32b0b88f4f18b46b6ae021856984c7a4.ctex"]
+source_file="res://Sprites/jobprogressbar.png"
+dest_files=["res://.godot/imported/jobprogressbar.png-780fe96aef4361de35b8f30f2fca73e3.ctex"]
 
 [params]
 
