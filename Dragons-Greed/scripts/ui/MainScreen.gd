@@ -55,3 +55,7 @@ func scale_dragon():
 	
 	# Scale the Dragon node
 	dragon_node.scale = Vector2(dragon_constants[2], dragon_constants[2])
+
+
+func _on_education_button_pressed():
+	pass # Replace with function body.

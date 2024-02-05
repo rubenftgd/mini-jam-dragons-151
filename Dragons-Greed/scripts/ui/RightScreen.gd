@@ -9,6 +9,7 @@ var gems_button
 var space_available
 var margin_percentage = 0.065 # Adjust at will
 var progress_bar
+var instructuions
 var money_label_border
 var money_label
 #########################################
@@ -23,6 +24,7 @@ var money_sound
 var education_sound
 var speed_sound
 var gems_sound
+var winning_sound
 #########################################
 func _ready():
 	work_button = $TextureRect/WorkButton
@@ -30,6 +32,7 @@ func _ready():
 	speed_button = $TextureRect/SpeedButton
 	gems_button = $TextureRect/GemsButton
 	progress_bar = $TextureRect2/TextureProgressBar
+	instructuions = $Instructions
 	money_label_border = $TextureRectLabel
 	money_label = $TextureRectLabel/Label
 #	work_button.focus_mode = Control.FOCUS_NONE  # Disable focus for the button
@@ -44,6 +47,7 @@ func _ready():
 	education_sound = $EducationSound
 	speed_sound = $SpeedSound
 	gems_sound = $GemsSound
+	winning_sound = $WinningSound
 	
 func _process(_delta):
 	position_buttons()
@@ -96,6 +100,11 @@ func position_buttons():
 	progress_bar.texture_progress_offset = Vector2(0,-6)
 	
 	##############################
+	# Instructions
+	#Posicao da progress bar (hardCoded), e o offset é para colocar a textura no sitio certo
+	instructuions.position = Vector2(55,310)
+	
+	##############################
 	# Money Label
 	y_position = size.y * 0.055  # Example: 20% from the top of the parent container
 	#money_label_border.size = Vector2(money_label_border.size.x * 1.3, money_label_border.size.y)
@@ -108,7 +117,11 @@ func _on_delay_timer_timeout():
 	work_instance.can_increase_money = true
 	print("Time has passed. You can work again!"); print("")
 	work_instance.work_money += education_instance.education_bonus  # Increase work_money by the bonus amount
-	drop_item_on_dragon(1)
+	play_sound_per_type(1)
+
+func _on_work_button_mouse_entered():
+	instructuions.modulate = Color(0.8, 1, 0)
+	instructuions.text = "Work\nGain " + str(education_instance.education_bonus) + " Dragon Coins"
 
 func _on_work_button_pressed():
 	if work_instance.can_increase_money:
@@ -118,28 +131,51 @@ func _on_work_button_pressed():
 		#print("Work money: ", work_instance.work_money); print("")
 
 func _on_education_button_mouse_entered():
+	instructuions.modulate = Color(0,0,0)
+	if education_instance.getEducationPrice() == 0:
+		instructuions.text = "Education\n\nNo more upgrades available"
+	else:
+		instructuions.text = "Education\nGain more from work\n\nNext Level\n" + str(education_instance.getEducationBonus()) + " Dragon Coins\n\nCost\n" + str(education_instance.getEducationPrice()) + " Dragon Coins"
+
+func _on_education_button_pressed():
 	if work_instance.can_increase_money and (work_instance.work_money >= education_instance.getEducationPrice()) and (education_instance.getEducationPrice() != 0):
 		print("Education Button")	
 		work_instance.work_money -= education_instance.getEducationPrice()
 		education_instance.applyBonus()
-		drop_item_on_dragon(2)
+		play_sound_per_type(2)
 		print("New Value for Work money: ", education_instance.education_bonus); print("")
 
 func _on_speed_button_mouse_entered():
+	instructuions.modulate = Color(0.8,0.8,0.8)
+	if speed_instance.getSpeedPrice() == 0:
+		instructuions.text = "Speed\n\nNo more upgrades available"
+	else:
+		instructuions.text = "Speed\nWork Faster\n\nCurrently Takes\n" + str(speed_instance.total_time) + " Seconds\n\nCost\n" + str(speed_instance.getSpeedPrice()) + " Dragon Coins"
+
+func _on_speed_button_pressed():
 	if work_instance.can_increase_money and (work_instance.work_money >= speed_instance.getSpeedPrice()) and (speed_instance.getSpeedPrice() != 0):
 		print("Speed Button")
 		work_instance.work_money -= speed_instance.getSpeedPrice()
 		speed_instance.applyBonus()
-		drop_item_on_dragon(3)
+		play_sound_per_type(3)
 
 func _on_gems_button_mouse_entered():
+	instructuions.modulate = Color(0.6,0.1,1)
+	if gems_instance.getGemsPrice() == 0:
+		instructuions.text = "Gems\n\nNo more upgrades available"
+	else:
+		instructuions.text = "Gems\nNever Ending Jewelry Treasure\n\nNext gem costs\n" + str(gems_instance.getGemsPrice()) + " Dragon Coins"
+
+func _on_gems_button_pressed():
 	if work_instance.can_increase_money and (work_instance.work_money >= gems_instance.getGemsPrice()) and (gems_instance.getGemsPrice() != 0):
 		print("Gems Button")
 		work_instance.work_money -= gems_instance.getGemsPrice()
 		gems_instance.purchaseGem()
-		drop_item_on_dragon(4)
+		play_sound_per_type(4)
+	if gems_instance.getGemsPrice() == 0:
+		show_thank_you_pop_up()
 
-func drop_item_on_dragon(number : int):
+func play_sound_per_type(number : int):
 	if number == 1:
 		money_sound.play()
 	elif number == 2:
@@ -152,4 +188,11 @@ func drop_item_on_dragon(number : int):
 		print("Error in the sound effects!")
 		return 0
 
-var elapsed_time := 0.0  # Tracks the elapsed time
+func show_thank_you_pop_up():
+	var dialog = $AcceptDialog
+	dialog.visible = true
+	var game_scene = get_node("/root/GameScene")
+	var parent_sound = game_scene.get_node("AudioStreamPlayer2D")
+	if parent_sound:
+		parent_sound.stop()
+	winning_sound.play()
