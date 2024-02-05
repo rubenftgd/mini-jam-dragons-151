@@ -24,6 +24,16 @@ func applyBonus():
 		print("New education Bonus: ", education_bonus)
 		max_bonus_allowed-=1
 
+func getEducationBonus():
+	if max_bonus_allowed > 0:
+		# Arithmetic Sequence
+		# an = a1 + (n-1) * d
+		# d is the upgrade amount per level - d is 11
+		var index = education_price.size() - max_bonus_allowed + 2
+		var bonus
+		bonus = education_bonus_first_term + (index - 1) * 10
+		return bonus
+
 #func defineEducationPrice():
 	# Sequence [10,16,26,43,70,114,185,302,491,799]
 #	var a1 = 10  # First term

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://kqfk2csbs4h"]
+
+[ext_resource type="Script" path="res://scripts/ui/ending.gd" id="1_yf5ba"]
+
+[node name="AcceptDialog" type="AcceptDialog"]
+title = "You Win!"
+initial_position = 2
+ok_button_text = "Ok and Exit"
+dialog_autowrap = true
+script = ExtResource("1_yf5ba")
+
+[connection signal="confirmed" from="." to="." method="_on_confirmed"]
